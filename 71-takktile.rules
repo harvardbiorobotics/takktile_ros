@@ -1,0 +1,7 @@
+# This file enables non-root access to the TakkTile touch sensor under udev-enabled Linux systems
+# such as Ubuntu
+#
+# It has been tested on Ubuntu 12.04 64-bit, and is provided as-is with no implied warranty 
+#
+SUBSYSTEMS=="usb", ACTION=="add", ATTRS{idVendor}=="59e3", ATTRS{idProduct}=="74c7", MODE="666"
+

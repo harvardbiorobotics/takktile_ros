@@ -1,0 +1,18 @@
+<package>
+  <description brief="takktile">
+
+     takktile
+
+  </description>
+  <author>ljentoft</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/takktile</url>
+  <depend package="rospy"/>
+  <depend package="std_msgs"/>
+  <depend package="std_srvs"/>
+  <depend package="geometry_msgs"/>
+
+</package>
+
+
