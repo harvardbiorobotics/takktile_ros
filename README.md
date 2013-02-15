@@ -4,7 +4,7 @@ takktile-ros
 ros drivers for the TakkTile tactile array<br>
 <br>
 1) Get code<br>
-git clone --recursive https://github.com/harvardbiorobotics/takktile-ros.git<br>
+git clone --recursive https://github.com/harvardbiorobotics/takktile_ros.git<br>
 <br>
 2) Add the package path to the ROS_PACKAGE_PATH<br>
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home<br>
