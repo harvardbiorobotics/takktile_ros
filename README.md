@@ -1,14 +1,18 @@
 takktile-ros
 ============
 
-ros drivers for the TakkTile tactile array
+ros drivers for the TakkTile tactile array<br>
+<br>
+1) Get code<br>
+git clone --recursive https://github.com/harvardbiorobotics/takktile-ros.git<br>
+<br>
+2) Add the package path to the ROS_PACKAGE_PATH<br>
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home<br>
+<br>
+Or add it to the bash<br>
+echo "ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:/home" >> ~/.bashrc<br>
+source ~/.bashrc<br>
+<br>
+3) Compile<br>
+rosmake<br>
 
-get code:
-git clone --recursive https://github.com/harvardbiorobotics/takktile-ros.git
-
-add the package path to the ROS_PACKAGE_PATH
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home
-
-Or add it to the bash
-echo "ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:/home" >> ~/.bashrc
-source ~/.bashrc
