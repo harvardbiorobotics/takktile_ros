@@ -1,7 +1,6 @@
 FILE(REMOVE_RECURSE
   "../msg_gen"
-  "../src/takktile/msg"
-  "../msg_gen"
+  "../src/takktile_ros/msg"
   "CMakeFiles/test"
 )
 

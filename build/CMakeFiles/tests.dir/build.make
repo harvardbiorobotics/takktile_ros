@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ljentoft/Dropbox/TakkTile/tech/takktile
+CMAKE_SOURCE_DIR = /home/biorobotics/takktile_ros
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ljentoft/Dropbox/TakkTile/tech/takktile/build
+CMAKE_BINARY_DIR = /home/biorobotics/takktile_ros/build
 
 # Utility rule file for tests.
 
@@ -57,6 +57,6 @@ CMakeFiles/tests.dir/clean:
 .PHONY : CMakeFiles/tests.dir/clean
 
 CMakeFiles/tests.dir/depend:
-	cd /home/ljentoft/Dropbox/TakkTile/tech/takktile/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ljentoft/Dropbox/TakkTile/tech/takktile /home/ljentoft/Dropbox/TakkTile/tech/takktile /home/ljentoft/Dropbox/TakkTile/tech/takktile/build /home/ljentoft/Dropbox/TakkTile/tech/takktile/build /home/ljentoft/Dropbox/TakkTile/tech/takktile/build/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/biorobotics/takktile_ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/biorobotics/takktile_ros /home/biorobotics/takktile_ros /home/biorobotics/takktile_ros/build /home/biorobotics/takktile_ros/build /home/biorobotics/takktile_ros/build/CMakeFiles/tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/tests.dir/depend
 

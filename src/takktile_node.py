@@ -37,7 +37,7 @@
 #
 ########################################################################
 
-import roslib; roslib.load_manifest('takktile')
+import roslib; roslib.load_manifest('takktile_ros')
 import rospy
 
 import os, inspect   # used for loading conf file relative to script directory
@@ -96,7 +96,7 @@ class TakkNode:
             calibrated = [0.0] * num_alive
             contact = [False] * num_alive
 
-            [self.pressure, temp_new] = tk.getDataRaw(1)
+            [self.pressure, temp_new] = tk.getDataRaw()
 
             # lowpass filter temperature
             self.temp = TEMPERATURE_LOWPASS * np.array(temp_new) + (1 - TEMPERATURE_LOWPASS) * self.temp

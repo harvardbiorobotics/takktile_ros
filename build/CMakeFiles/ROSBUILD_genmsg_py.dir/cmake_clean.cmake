@@ -1,13 +1,12 @@
 FILE(REMOVE_RECURSE
   "../msg_gen"
-  "../src/takktile/msg"
-  "../msg_gen"
+  "../src/takktile_ros/msg"
   "CMakeFiles/ROSBUILD_genmsg_py"
-  "../src/takktile/msg/__init__.py"
-  "../src/takktile/msg/_Touch.py"
-  "../src/takktile/msg/_Info.py"
-  "../src/takktile/msg/_Contact.py"
-  "../src/takktile/msg/_Raw.py"
+  "../src/takktile_ros/msg/__init__.py"
+  "../src/takktile_ros/msg/_Info.py"
+  "../src/takktile_ros/msg/_Raw.py"
+  "../src/takktile_ros/msg/_Contact.py"
+  "../src/takktile_ros/msg/_Touch.py"
 )
 
 # Per-language clean rules from dependency scanning.

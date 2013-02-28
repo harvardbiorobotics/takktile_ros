@@ -32,85 +32,129 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ljentoft/Dropbox/TakkTile/tech/takktile
+CMAKE_SOURCE_DIR = /home/biorobotics/takktile_ros
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ljentoft/Dropbox/TakkTile/tech/takktile/build
+CMAKE_BINARY_DIR = /home/biorobotics/takktile_ros/build
 
 # Utility rule file for ROSBUILD_genmsg_py.
 
 # Include the progress variables for this target.
 include CMakeFiles/ROSBUILD_genmsg_py.dir/progress.make
 
-CMakeFiles/ROSBUILD_genmsg_py: ../src/takktile/msg/__init__.py
+CMakeFiles/ROSBUILD_genmsg_py: ../src/takktile_ros/msg/__init__.py
 
-../src/takktile/msg/__init__.py: ../src/takktile/msg/_Touch.py
-../src/takktile/msg/__init__.py: ../src/takktile/msg/_Info.py
-../src/takktile/msg/__init__.py: ../src/takktile/msg/_Contact.py
-../src/takktile/msg/__init__.py: ../src/takktile/msg/_Raw.py
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ljentoft/Dropbox/TakkTile/tech/takktile/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/takktile/msg/__init__.py"
-	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/ljentoft/Dropbox/TakkTile/tech/takktile/msg/Touch.msg /home/ljentoft/Dropbox/TakkTile/tech/takktile/msg/Info.msg /home/ljentoft/Dropbox/TakkTile/tech/takktile/msg/Contact.msg /home/ljentoft/Dropbox/TakkTile/tech/takktile/msg/Raw.msg
+../src/takktile_ros/msg/__init__.py: ../src/takktile_ros/msg/_Info.py
+../src/takktile_ros/msg/__init__.py: ../src/takktile_ros/msg/_Raw.py
+../src/takktile_ros/msg/__init__.py: ../src/takktile_ros/msg/_Contact.py
+../src/takktile_ros/msg/__init__.py: ../src/takktile_ros/msg/_Touch.py
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/biorobotics/takktile_ros/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/takktile_ros/msg/__init__.py"
+	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/biorobotics/takktile_ros/msg/Info.msg /home/biorobotics/takktile_ros/msg/Raw.msg /home/biorobotics/takktile_ros/msg/Contact.msg /home/biorobotics/takktile_ros/msg/Touch.msg
 
-../src/takktile/msg/_Touch.py: ../msg/Touch.msg
-../src/takktile/msg/_Touch.py: /opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py
-../src/takktile/msg/_Touch.py: /opt/ros/fuerte/share/roslib/bin/gendeps
-../src/takktile/msg/_Touch.py: ../manifest.xml
-../src/takktile/msg/_Touch.py: /opt/ros/fuerte/share/roslang/manifest.xml
-../src/takktile/msg/_Touch.py: /opt/ros/fuerte/share/rospy/manifest.xml
-../src/takktile/msg/_Touch.py: /opt/ros/fuerte/share/std_msgs/manifest.xml
-../src/takktile/msg/_Touch.py: /opt/ros/fuerte/share/std_srvs/manifest.xml
-../src/takktile/msg/_Touch.py: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ljentoft/Dropbox/TakkTile/tech/takktile/build/CMakeFiles $(CMAKE_PROGRESS_2)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/takktile/msg/_Touch.py"
-	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/ljentoft/Dropbox/TakkTile/tech/takktile/msg/Touch.msg
+../src/takktile_ros/msg/_Info.py: ../msg/Info.msg
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/lib/roslib/gendeps
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/geometry_msgs/msg/Point32.msg
+../src/takktile_ros/msg/_Info.py: ../manifest.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/genmsg/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/genpy/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/rosgraph/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/cpp_common/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/rostime/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/roscpp_traits/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/roscpp_serialization/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/message_runtime/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/std_msgs/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/rosgraph_msgs/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/catkin/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/rospack/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/roslib/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/rospy/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/std_srvs/package.xml
+../src/takktile_ros/msg/_Info.py: /opt/ros/groovy/share/geometry_msgs/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/biorobotics/takktile_ros/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/takktile_ros/msg/_Info.py"
+	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/biorobotics/takktile_ros/msg/Info.msg
 
-../src/takktile/msg/_Info.py: ../msg/Info.msg
-../src/takktile/msg/_Info.py: /opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py
-../src/takktile/msg/_Info.py: /opt/ros/fuerte/share/roslib/bin/gendeps
-../src/takktile/msg/_Info.py: /opt/ros/fuerte/share/geometry_msgs/msg/Point32.msg
-../src/takktile/msg/_Info.py: ../manifest.xml
-../src/takktile/msg/_Info.py: /opt/ros/fuerte/share/roslang/manifest.xml
-../src/takktile/msg/_Info.py: /opt/ros/fuerte/share/rospy/manifest.xml
-../src/takktile/msg/_Info.py: /opt/ros/fuerte/share/std_msgs/manifest.xml
-../src/takktile/msg/_Info.py: /opt/ros/fuerte/share/std_srvs/manifest.xml
-../src/takktile/msg/_Info.py: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ljentoft/Dropbox/TakkTile/tech/takktile/build/CMakeFiles $(CMAKE_PROGRESS_3)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/takktile/msg/_Info.py"
-	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/ljentoft/Dropbox/TakkTile/tech/takktile/msg/Info.msg
+../src/takktile_ros/msg/_Raw.py: ../msg/Raw.msg
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/lib/roslib/gendeps
+../src/takktile_ros/msg/_Raw.py: ../manifest.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/genmsg/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/genpy/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/rosgraph/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/cpp_common/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/rostime/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/roscpp_traits/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/roscpp_serialization/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/message_runtime/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/std_msgs/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/rosgraph_msgs/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/catkin/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/rospack/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/roslib/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/rospy/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/std_srvs/package.xml
+../src/takktile_ros/msg/_Raw.py: /opt/ros/groovy/share/geometry_msgs/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/biorobotics/takktile_ros/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/takktile_ros/msg/_Raw.py"
+	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/biorobotics/takktile_ros/msg/Raw.msg
 
-../src/takktile/msg/_Contact.py: ../msg/Contact.msg
-../src/takktile/msg/_Contact.py: /opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py
-../src/takktile/msg/_Contact.py: /opt/ros/fuerte/share/roslib/bin/gendeps
-../src/takktile/msg/_Contact.py: ../manifest.xml
-../src/takktile/msg/_Contact.py: /opt/ros/fuerte/share/roslang/manifest.xml
-../src/takktile/msg/_Contact.py: /opt/ros/fuerte/share/rospy/manifest.xml
-../src/takktile/msg/_Contact.py: /opt/ros/fuerte/share/std_msgs/manifest.xml
-../src/takktile/msg/_Contact.py: /opt/ros/fuerte/share/std_srvs/manifest.xml
-../src/takktile/msg/_Contact.py: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ljentoft/Dropbox/TakkTile/tech/takktile/build/CMakeFiles $(CMAKE_PROGRESS_4)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/takktile/msg/_Contact.py"
-	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/ljentoft/Dropbox/TakkTile/tech/takktile/msg/Contact.msg
+../src/takktile_ros/msg/_Contact.py: ../msg/Contact.msg
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/lib/roslib/gendeps
+../src/takktile_ros/msg/_Contact.py: ../manifest.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/genmsg/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/genpy/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/rosgraph/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/cpp_common/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/rostime/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/roscpp_traits/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/roscpp_serialization/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/message_runtime/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/std_msgs/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/rosgraph_msgs/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/catkin/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/rospack/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/roslib/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/rospy/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/std_srvs/package.xml
+../src/takktile_ros/msg/_Contact.py: /opt/ros/groovy/share/geometry_msgs/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/biorobotics/takktile_ros/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/takktile_ros/msg/_Contact.py"
+	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/biorobotics/takktile_ros/msg/Contact.msg
 
-../src/takktile/msg/_Raw.py: ../msg/Raw.msg
-../src/takktile/msg/_Raw.py: /opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py
-../src/takktile/msg/_Raw.py: /opt/ros/fuerte/share/roslib/bin/gendeps
-../src/takktile/msg/_Raw.py: ../manifest.xml
-../src/takktile/msg/_Raw.py: /opt/ros/fuerte/share/roslang/manifest.xml
-../src/takktile/msg/_Raw.py: /opt/ros/fuerte/share/rospy/manifest.xml
-../src/takktile/msg/_Raw.py: /opt/ros/fuerte/share/std_msgs/manifest.xml
-../src/takktile/msg/_Raw.py: /opt/ros/fuerte/share/std_srvs/manifest.xml
-../src/takktile/msg/_Raw.py: /opt/ros/fuerte/share/geometry_msgs/manifest.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ljentoft/Dropbox/TakkTile/tech/takktile/build/CMakeFiles $(CMAKE_PROGRESS_5)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/takktile/msg/_Raw.py"
-	/opt/ros/fuerte/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/ljentoft/Dropbox/TakkTile/tech/takktile/msg/Raw.msg
+../src/takktile_ros/msg/_Touch.py: ../msg/Touch.msg
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/lib/roslib/gendeps
+../src/takktile_ros/msg/_Touch.py: ../manifest.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/genmsg/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/genpy/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/rosgraph/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/cpp_common/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/rostime/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/roscpp_traits/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/roscpp_serialization/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/message_runtime/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/std_msgs/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/rosgraph_msgs/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/catkin/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/rospack/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/roslib/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/rospy/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/std_srvs/package.xml
+../src/takktile_ros/msg/_Touch.py: /opt/ros/groovy/share/geometry_msgs/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/biorobotics/takktile_ros/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/takktile_ros/msg/_Touch.py"
+	/opt/ros/groovy/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/biorobotics/takktile_ros/msg/Touch.msg
 
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py
-ROSBUILD_genmsg_py: ../src/takktile/msg/__init__.py
-ROSBUILD_genmsg_py: ../src/takktile/msg/_Touch.py
-ROSBUILD_genmsg_py: ../src/takktile/msg/_Info.py
-ROSBUILD_genmsg_py: ../src/takktile/msg/_Contact.py
-ROSBUILD_genmsg_py: ../src/takktile/msg/_Raw.py
+ROSBUILD_genmsg_py: ../src/takktile_ros/msg/__init__.py
+ROSBUILD_genmsg_py: ../src/takktile_ros/msg/_Info.py
+ROSBUILD_genmsg_py: ../src/takktile_ros/msg/_Raw.py
+ROSBUILD_genmsg_py: ../src/takktile_ros/msg/_Contact.py
+ROSBUILD_genmsg_py: ../src/takktile_ros/msg/_Touch.py
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py.dir/build.make
 .PHONY : ROSBUILD_genmsg_py
 
@@ -123,6 +167,6 @@ CMakeFiles/ROSBUILD_genmsg_py.dir/clean:
 .PHONY : CMakeFiles/ROSBUILD_genmsg_py.dir/clean
 
 CMakeFiles/ROSBUILD_genmsg_py.dir/depend:
-	cd /home/ljentoft/Dropbox/TakkTile/tech/takktile/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ljentoft/Dropbox/TakkTile/tech/takktile /home/ljentoft/Dropbox/TakkTile/tech/takktile /home/ljentoft/Dropbox/TakkTile/tech/takktile/build /home/ljentoft/Dropbox/TakkTile/tech/takktile/build /home/ljentoft/Dropbox/TakkTile/tech/takktile/build/CMakeFiles/ROSBUILD_genmsg_py.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/biorobotics/takktile_ros/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/biorobotics/takktile_ros /home/biorobotics/takktile_ros /home/biorobotics/takktile_ros/build /home/biorobotics/takktile_ros/build /home/biorobotics/takktile_ros/build/CMakeFiles/ROSBUILD_genmsg_py.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ROSBUILD_genmsg_py.dir/depend
 

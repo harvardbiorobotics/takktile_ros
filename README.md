@@ -15,4 +15,7 @@ source ~/.bashrc<br>
 <br>
 3) Compile<br>
 rosmake<br>
+<br>
+4) set USB permissions<br>
+sudo cp 71-takktile.rules /etc/udev/rules.d/<br>
 
