@@ -1,8 +1,6 @@
 <package>
   <description brief="takktile_ros">
-
      takktile
-
   </description>
   <author>ljentoft</author>
   <license>BSD</license>

@@ -239,8 +239,9 @@ clean: CMakeFiles/rosbuild_clean-test-results.dir/clean
 # Target rules for target CMakeFiles/rosbuild_precompile.dir
 
 # All Build rule for target.
-CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg.dir/all
+CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_gensrv.dir/all
 CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg_libexe.dir/all
+CMakeFiles/rosbuild_precompile.dir/all: CMakeFiles/rospack_genmsg.dir/all
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/depend
 	$(MAKE) -f CMakeFiles/rosbuild_precompile.dir/build.make CMakeFiles/rosbuild_precompile.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/biorobotics/takktile_ros/build/CMakeFiles 
@@ -425,6 +426,41 @@ CMakeFiles/rospack_gensrv.dir/clean:
 
 # clean rule for target.
 clean: CMakeFiles/rospack_gensrv.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/rospack_gensrv_all.dir
+
+# All Build rule for target.
+CMakeFiles/rospack_gensrv_all.dir/all: CMakeFiles/rospack_gensrv.dir/all
+	$(MAKE) -f CMakeFiles/rospack_gensrv_all.dir/build.make CMakeFiles/rospack_gensrv_all.dir/depend
+	$(MAKE) -f CMakeFiles/rospack_gensrv_all.dir/build.make CMakeFiles/rospack_gensrv_all.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/biorobotics/takktile_ros/build/CMakeFiles 
+	@echo "Built target rospack_gensrv_all"
+.PHONY : CMakeFiles/rospack_gensrv_all.dir/all
+
+# Include target in all.
+all: CMakeFiles/rospack_gensrv_all.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/rospack_gensrv_all.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/biorobotics/takktile_ros/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rospack_gensrv_all.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/biorobotics/takktile_ros/build/CMakeFiles 0
+.PHONY : CMakeFiles/rospack_gensrv_all.dir/rule
+
+# Convenience name for target.
+rospack_gensrv_all: CMakeFiles/rospack_gensrv_all.dir/rule
+.PHONY : rospack_gensrv_all
+
+# clean rule for target.
+CMakeFiles/rospack_gensrv_all.dir/clean:
+	$(MAKE) -f CMakeFiles/rospack_gensrv_all.dir/build.make CMakeFiles/rospack_gensrv_all.dir/clean
+.PHONY : CMakeFiles/rospack_gensrv_all.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/rospack_gensrv_all.dir/clean
 .PHONY : clean
 
 #=============================================================================

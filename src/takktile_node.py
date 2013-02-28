@@ -36,6 +36,8 @@
 #   calibration coefficients (if specified manually)
 #
 ########################################################################
+# rosmake --target=clean -a --build-everything
+
 
 import roslib; roslib.load_manifest('takktile_ros')
 import rospy
@@ -45,23 +47,23 @@ import numpy as np   # used for array operations
 
 from std_srvs.srv import Empty
 from geometry_msgs.msg import Point
-from takktile.msg import Raw, Touch, Contact, Info
+from takktile_ros.msg import Raw, Touch, Contact, Info
 
 from TakkTile2 import TakkTile2
 from yaml import safe_load
 
 class TakkNode:
     def __init__(self, xyz_map, frame_id, temp_lowpass, contact_threshold):
-        topic = 'takktile'
+        topic = 'takktile_ros'
         
         # Set up node & topics
         rospy.init_node(topic, anonymous=True)
         rospy.loginfo(rospy.get_name()+" node initialized")
 
         # fast topics
-        raw_pub        = rospy.Publisher(topic + '/raw',     Raw)
-        calibrated_pub = rospy.Publisher(topic + '/touch',   Touch)
-        contact_pub    = rospy.Publisher(topic + '/contact', Contact)
+        raw_pub        = rospy.Publisher(topic + '/Raw',     Raw)
+        calibrated_pub = rospy.Publisher(topic + '/Touch',   Touch)
+        contact_pub    = rospy.Publisher(topic + '/Contact', Contact)
 
         # slow topic
         info_pub = rospy.Publisher(topic + '/sensor_info', Info)
@@ -70,8 +72,10 @@ class TakkNode:
         tk = TakkTile2()
 
         # get static values once
-        self.alive = tk.getAlive()
-        num_alive = len(self.alive)
+#        self.alive = tk.getAlive()
+        self.alive = tk.alive
+
+        num_alive = len(tk.alive)
         self.calibration = np.array(tk.calibrationCoefficients)
         
         # start rospy service for zeroing sensors
@@ -81,9 +85,15 @@ class TakkNode:
         r = rospy.Rate(50) 
 
 		# initialize temperature lowpass with actual data
-        [pressure, temp] = tk.getDataRaw(1)
-        self.pressure = np.array(pressure)
-        self.temp = np.array(temp)
+        data = tk.getDataRaw()
+	# print 'self.getDataRaw():', data
+
+	# unpack the values
+	# first - extract the values from the dictionary
+	# second - unzip
+	[self.pressure, self.temp] = zip(*data.values())
+        self.pressure = np.array(self.pressure)
+        self.temp = np.array(self.temp)
 
         i = 0
         while not rospy.is_shutdown():
@@ -96,22 +106,35 @@ class TakkNode:
             calibrated = [0.0] * num_alive
             contact = [False] * num_alive
 
-            [self.pressure, temp_new] = tk.getDataRaw()
+	    data=tk.getDataRaw()
+# unpack the values
+# first - extract the values from the dictionary
+# second - unzip
+
+#	    print "type(data.values()) ->", type(data.values())
+#	    dataValues=data.values()
+#	    print "zip(*dataValues) ->", zip(*dataValues)
+
+	    [self.pressure, temp_new] = zip(*data.values())
 
             # lowpass filter temperature
             self.temp = TEMPERATURE_LOWPASS * np.array(temp_new) + (1 - TEMPERATURE_LOWPASS) * self.temp
             raw_pub.publish(self.pressure, self.temp)
 
-            for j in self.alive:
-                calibrated[j] = self.calibration[j][0] + \
-                    (self.calibration[j][1] + self.calibration[j][3]*self.pressure[j] + self.calibration[j][4]*self.temp[j])*self.pressure[j] + \
-                    (self.calibration[j][2] + self.calibration[j][5]*self.temp[j])*self.temp[j]
-                contact[j] = abs(calibrated[j]) > contact_threshold
+#            for j in self.alive:
+#                calibrated[j] = self.calibration[j][0] + \
+#                    (self.calibration[j][1] + self.calibration[j][3]*self.pressure[j] + self.calibration[j][4]*self.temp[j])*self.pressure[j] + \
+#                    (self.calibration[j][2] + self.calibration[j][5]*self.temp[j])*self.temp[j]
+#                contact[j] = abs(calibrated[j]) > contact_threshold
 
             calibrated_pub.publish(calibrated)
             contact_pub.publish(contact)
+#	    print "published Pressure ->", self.pressure
             r.sleep()
             
+	# switch things off
+	print "switching off"
+	tk.stopSampling()
 
     # start 'calibrate' service
     def zero_callback(self, msg):

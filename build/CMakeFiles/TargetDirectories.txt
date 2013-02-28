@@ -12,6 +12,7 @@
 /home/biorobotics/takktile_ros/build/CMakeFiles/rospack_genmsg_all.dir
 /home/biorobotics/takktile_ros/build/CMakeFiles/rospack_genmsg_libexe.dir
 /home/biorobotics/takktile_ros/build/CMakeFiles/rospack_gensrv.dir
+/home/biorobotics/takktile_ros/build/CMakeFiles/rospack_gensrv_all.dir
 /home/biorobotics/takktile_ros/build/CMakeFiles/run_tests.dir
 /home/biorobotics/takktile_ros/build/CMakeFiles/test.dir
 /home/biorobotics/takktile_ros/build/CMakeFiles/test-future.dir
