@@ -67,7 +67,6 @@ class TakkNode:
 
         # slow topic
         info_pub = rospy.Publisher(topic + '/sensor_info', Info)
-
         # initialize connection to TakkTile
         tk = TakkTile2()
 
@@ -107,13 +106,14 @@ class TakkNode:
             contact = [False] * num_alive
 
 	    data=tk.getDataRaw()
-# unpack the values
-# first - extract the values from the dictionary
-# second - unzip
 
-#	    print "type(data.values()) ->", type(data.values())
-#	    dataValues=data.values()
-#	    print "zip(*dataValues) ->", zip(*dataValues)
+	    # unpack the values
+	    # first - extract the values from the dictionary
+	    # second - unzip
+
+	    #	    print "type(data.values()) ->", type(data.values())
+	    #	    dataValues=data.values()
+	    #	    print "zip(*dataValues) ->", zip(*dataValues)
 
 	    [self.pressure, temp_new] = zip(*data.values())
 
