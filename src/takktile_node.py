@@ -83,7 +83,9 @@ class TakkNode:
         # publish sensor data at 100 Hz
         r = rospy.Rate(50) 
 
-		# initialize temperature lowpass with actual data
+	tk.startSampling()
+
+	# initialize temperature lowpass with actual data
         data = tk.getDataRaw()
 	# print 'self.getDataRaw():', data
 

@@ -4,7 +4,11 @@ class TakkTile2(TakkTile):
 	# wrapper class to give full-array getData callback
 	def __init__(self):
 		TakkTile.__init__(self)
-		self.alive = self.getAlive()
+		print "self.alive 1", self.alive
+#		self.alive = self.getAlive()
+#		print "self.alive 2", self.alive
+#		self.alive = self.getAlive()
+#		print "self.alive 3", self.alive
 		self.num_sensors = len(self.alive)
 		# self.rows = np.unique(np.array(self.alive)/5)
 
