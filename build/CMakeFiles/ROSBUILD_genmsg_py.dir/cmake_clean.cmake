@@ -1,11 +1,12 @@
 FILE(REMOVE_RECURSE
-  "../msg_gen"
   "../src/takktile_ros/msg"
+  "../msg_gen"
+  "../msg_gen"
   "CMakeFiles/ROSBUILD_genmsg_py"
   "../src/takktile_ros/msg/__init__.py"
-  "../src/takktile_ros/msg/_Info.py"
-  "../src/takktile_ros/msg/_Raw.py"
   "../src/takktile_ros/msg/_Contact.py"
+  "../src/takktile_ros/msg/_Raw.py"
+  "../src/takktile_ros/msg/_Info.py"
   "../src/takktile_ros/msg/_Touch.py"
 )
 

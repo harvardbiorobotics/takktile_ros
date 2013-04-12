@@ -1,10 +1,11 @@
 FILE(REMOVE_RECURSE
-  "../msg_gen"
   "../src/takktile_ros/msg"
+  "../msg_gen"
+  "../msg_gen"
   "CMakeFiles/ROSBUILD_genmsg_cpp"
-  "../msg_gen/cpp/include/takktile_ros/Info.h"
-  "../msg_gen/cpp/include/takktile_ros/Raw.h"
   "../msg_gen/cpp/include/takktile_ros/Contact.h"
+  "../msg_gen/cpp/include/takktile_ros/Raw.h"
+  "../msg_gen/cpp/include/takktile_ros/Info.h"
   "../msg_gen/cpp/include/takktile_ros/Touch.h"
 )
 

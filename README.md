@@ -18,4 +18,6 @@ rosmake<br>
 <br>
 4) set USB permissions<br>
 sudo cp 71-takktile.rules /etc/udev/rules.d/<br>
-
+<br>
+5) Run <br>
+rosrun takktile_ros takktile_node.py<br>
