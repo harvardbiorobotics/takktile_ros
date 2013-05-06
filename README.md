@@ -1,25 +1,33 @@
 takktile-ros
 ============
 
-ros drivers for the TakkTile tactile array<br>
-<br>
-1.) Install TakkTile TakkFast USB drivers (see https://github.com/TakkTile/TakkTile-usb)<br>
-This will install TakkTile.py which is a dependency (currently included as a symlink in takktile_ros -- need to fix this)<br>
-2) Get code<br>
-> git clne --recursive https://github.com/harvardbiorobotics/takktile_ros.git<br>
-<br>
-3) Add the package path to the ROS_PACKAGE_PATH<br>
-> export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/home<br>
-<br>
-Or add it to the bash<br>
-> echo "ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:/home" >> ~/.bashrc<br>
-> source ~/.bashrc<br>
-<br>
-4) Compile<br>
-> rosmake takktile_ros<br>
-<br>
-5) set USB permissions<br>
-> sudo cp 71-takktile.rules /etc/udev/rules.d/<br>
-<br>
-6) Run <br>
-> rosrun takktile_ros takktile_node.py<br>
+ros drivers for the TakkTile tactile array
+
+1.) Install TakkTile TakkFast USB drivers (see https://github.com/TakkTile/TakkTile-usb)
+
+This will install TakkTile.py which is a dependency (currently included as a symlink in takktile_ros -- need to fix this)
+
+2) Get code
+
+> git clone --recursive https://github.com/harvardbiorobotics/takktile_ros.git
+
+3) Add the package path to the ROS_PACKAGE_PATH
+
+> export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/path/to/your/directory
+
+or add it to the bashrc
+
+> echo "ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:/home" >> ~/.bashrc
+
+> source ~/.bashrc
+
+4) Compile
+
+> rosmake takktile_ros
+
+5) set USB permissions
+
+> sudo cp 71-takktile.rules /etc/udev/rules.d/
+
+6) Run
+> rosrun takktile_ros takktile_node.py
