@@ -1,6 +1,5 @@
 import pygame as pg
 import numpy as np
-import time
 
 # simple class to display takktile signals on top of an image of the robot
 # using pygame; dots change color as value changes
@@ -38,16 +37,17 @@ class DotDisplay:
 			pg.draw.circle(self.screen, color, pos, self.dotradius, 0)		
 		pg.display.flip()
 
-		
-dots = ((278,145),(260,140),(243,134),(224,127),(204,121),(102,84),(78,76),(54,68),
-	(295,302),(275,309),(253,318),(232,326),(210,333),(93,376),(68,387),(41,397),
-	(537,148),(556,138),(575,132),(596,122),(614,113),(713,68),(734,58),(754,47),
-	(451,247),(432,244),(412,242),(392,239),(372,237),
-	(420,163),(407,175),(393,186),(378,198),(364,210))
+if __name__ = '__main__':		
+	import time
+	dots = ((278,145),(260,140),(243,134),(224,127),(204,121),(102,84),(78,76),(54,68),
+		(295,302),(275,309),(253,318),(232,326),(210,333),(93,376),(68,387),(41,397),
+		(537,148),(556,138),(575,132),(596,122),(614,113),(713,68),(734,58),(754,47),
+		(451,247),(432,244),(412,242),(392,239),(372,237),
+		(420,163),(407,175),(393,186),(378,198),(364,210))
 
-display = Display('background', 6, dots)
+	display = DotDisplay('hand.bmp', 6, dots)
 
-display.update([1]*len(dots))
+	display.update([1]*len(dots))
 
-time.sleep(10)
+	time.sleep(10)
 
