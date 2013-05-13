@@ -49,7 +49,7 @@ from std_srvs.srv import Empty
 from geometry_msgs.msg import Point
 from takktile_ros.msg import Raw, Touch, Contact, Info
 
-from TakkTile2 import TakkTile2
+from TakkTile import TakkTile
 from yaml import safe_load
 
 class TakkNode:
@@ -61,22 +61,21 @@ class TakkNode:
         rospy.loginfo(rospy.get_name()+" node initialized")
 
         # fast topics
-        raw_pub        = rospy.Publisher(topic + '/Raw',     Raw)
-        calibrated_pub = rospy.Publisher(topic + '/Touch',   Touch)
-        contact_pub    = rospy.Publisher(topic + '/Contact', Contact)
+        raw_pub        = rospy.Publisher(topic + '/raw',     Raw)
+        calibrated_pub = rospy.Publisher(topic + '/calibrated',   Touch)
+        contact_pub    = rospy.Publisher(topic + '/contact', Contact)
 
         # slow topic
         info_pub = rospy.Publisher(topic + '/sensor_info', Info)
         # initialize connection to TakkTile
-        tk = TakkTile2()
+        tk = TakkTile()
 
         # get static values once
 #        self.alive = tk.getAlive()
         self.alive = tk.alive
 
         num_alive = len(tk.alive)
-        self.calibration = np.array(tk.calibrationCoefficients)
-        
+        self.calibration = np.zeros(len(tk.alive)) # start with zero-order calibration
         # start rospy service for zeroing sensors
         rospy.Service(topic + '/zero', Empty, self.zero_callback)
         
@@ -119,15 +118,14 @@ class TakkNode:
 
 	    [self.pressure, temp_new] = zip(*data.values())
 
+            #print self.pressure
             # lowpass filter temperature
             self.temp = TEMPERATURE_LOWPASS * np.array(temp_new) + (1 - TEMPERATURE_LOWPASS) * self.temp
             raw_pub.publish(self.pressure, self.temp)
 
-#            for j in self.alive:
-#                calibrated[j] = self.calibration[j][0] + \
-#                    (self.calibration[j][1] + self.calibration[j][3]*self.pressure[j] + self.calibration[j][4]*self.temp[j])*self.pressure[j] + \
-#                    (self.calibration[j][2] + self.calibration[j][5]*self.temp[j])*self.temp[j]
-#                contact[j] = abs(calibrated[j]) > contact_threshold
+            calibrated = np.array(self.pressure) + self.calibration
+            for j in range(len(self.alive)):
+                contact[j] = abs(calibrated[j]) > contact_threshold
 
             calibrated_pub.publish(calibrated)
             contact_pub.publish(contact)
@@ -141,9 +139,7 @@ class TakkNode:
     # start 'calibrate' service
     def zero_callback(self, msg):
         # global cc and current_values
-        for j in self.alive:
-            self.calibration[j][0] = -((self.calibration[j][1] + self.calibration[j][3]*self.pressure[j] + self.calibration[j][4]*self.temp[j])*self.pressure[j] + \
-                (self.calibration[j][2] + self.calibration[j][5]*self.temp[j])*self.temp[j])
+        self.calibration = -np.array(self.pressure)
         rospy.loginfo(rospy.get_name() + ' zeroed sensors')
         return []
 

@@ -15,7 +15,7 @@ class DotDisplay:
 
 		# set up screen
 		pg.init()
-		img = pg.image.load('hand.bmp')
+		img = pg.image.load(background)
 		self.screen = pg.display.set_mode(img.get_size())
 		pg.mouse.set_visible(True)
 		self.screen.blit(img, (0,0))
@@ -37,7 +37,7 @@ class DotDisplay:
 			pg.draw.circle(self.screen, color, pos, self.dotradius, 0)		
 		pg.display.flip()
 
-if __name__ = '__main__':		
+if __name__ == '__main__':		
 	import time
 	dots = ((278,145),(260,140),(243,134),(224,127),(204,121),(102,84),(78,76),(54,68),
 		(295,302),(275,309),(253,318),(232,326),(210,333),(93,376),(68,387),(41,397),
