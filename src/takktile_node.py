@@ -96,11 +96,14 @@ class TakkNode:
         self.temp = np.array(self.temp)
 
         i = 0
+        k = 0
         while not rospy.is_shutdown():
             i += 1
             if i >= 100: # downsample static info
                 info_pub.publish(frame_id, xyz_map, self.alive)
                 i = 0
+                k += 100
+                print k
 
             # publish sensor vals at 100 Hz
             calibrated = [0.0] * num_alive
