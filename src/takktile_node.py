@@ -94,6 +94,7 @@ class TakkNode:
 	[self.pressure, self.temp] = zip(*data.values())
         self.pressure = np.array(self.pressure)
         self.temp = np.array(self.temp)
+	self.calibration = -np.array(self.pressure) # zero values at startup
 
         i = 0
         #k = 0

@@ -1,6 +1,8 @@
 import pygame as pg
 import numpy as np
 
+import sys, os, inspect # used to avoid specifying absolute filepath for config files
+
 # simple class to display takktile signals on top of an image of the robot
 # using pygame; dots change color as value changes
 # 
@@ -15,7 +17,10 @@ class DotDisplay:
 
 		# set up screen
 		pg.init()
-		img = pg.image.load(background)
+
+		cmd_folder = os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0])
+
+		img = pg.image.load(os.path.join(cmd_folder, background))
 		self.screen = pg.display.set_mode(img.get_size())
 		pg.mouse.set_visible(True)
 		self.screen.blit(img, (0,0))
