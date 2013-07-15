@@ -91,7 +91,12 @@ class TakkNode:
 	# unpack the values
 	# first - extract the values from the dictionary
 	# second - unzip
-	[self.pressure, self.temp] = zip(*data.values())
+	self.pressure = []
+	self.temp = []
+	for index in self.alive:
+                print data[index]
+		self.pressure.append(data[index][0])
+		self.temp.append(data[index][1])
         self.pressure = np.array(self.pressure)
         self.temp = np.array(self.temp)
 	self.calibration = -np.array(self.pressure) # zero values at startup
@@ -120,7 +125,13 @@ class TakkNode:
 	    #	    dataValues=data.values()
 	    #	    print "zip(*dataValues) ->", zip(*dataValues)
 
-	    [self.pressure, temp_new] = zip(*data.values())
+            pressure = []
+            temp_new = []
+            for a in self.alive:
+                    pressure.append(data[a][0])
+                    temp_new.append(data[a][1])
+
+            self.pressure = pressure
 
             #print self.pressure
             # lowpass filter temperature
