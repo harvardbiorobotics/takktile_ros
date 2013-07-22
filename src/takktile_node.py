@@ -91,12 +91,7 @@ class TakkNode:
 	# unpack the values
 	# first - extract the values from the dictionary
 	# second - unzip
-	self.pressure = []
-	self.temp = []
-	for index in self.alive:
-                print data[index]
-		self.pressure.append(data[index][0])
-		self.temp.append(data[index][1])
+	[self.pressure, self.temp] = zip(*data.values())
         self.pressure = np.array(self.pressure)
         self.temp = np.array(self.temp)
 	self.calibration = -np.array(self.pressure) # zero values at startup
@@ -125,13 +120,7 @@ class TakkNode:
 	    #	    dataValues=data.values()
 	    #	    print "zip(*dataValues) ->", zip(*dataValues)
 
-            pressure = []
-            temp_new = []
-            for a in self.alive:
-                    pressure.append(data[a][0])
-                    temp_new.append(data[a][1])
-
-            self.pressure = pressure
+	    [self.pressure, temp_new] = zip(*data.values())
 
             #print self.pressure
             # lowpass filter temperature
@@ -144,7 +133,7 @@ class TakkNode:
 
             calibrated_pub.publish(calibrated)
             contact_pub.publish(contact)
-#	    print "published Pressure ->", self.pressure
+            # print "published Pressure ->", self.pressure
             r.sleep()
             
 	# switch things off
@@ -157,6 +146,17 @@ class TakkNode:
         self.calibration = -np.array(self.pressure)
         rospy.loginfo(rospy.get_name() + ' zeroed sensors')
         return []
+
+def takktile_zero():
+    # helper python interface to be used elsewhere
+    rospy.wait_for_service('/takktile_ros/zero')
+    try:
+         zero = rospy.ServiceProxy('/takktile_ros/zero', Empty)
+         zero()
+         return 
+    except rospy.ServiceException, e:
+         print "Service call failed: %s"%e
+
 
 # helper functions for loading configurations
 def load_config(config_file):
@@ -172,8 +172,6 @@ def get_param(param_name, config, default):
     except:
         if config.has_key(param_name):
             return config[param_name]    
-        else:
-            return default
 
 if __name__ == '__main__':
 	#   temp lowpass

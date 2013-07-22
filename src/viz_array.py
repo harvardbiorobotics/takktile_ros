@@ -12,11 +12,11 @@ import roslib; roslib.load_manifest('takktile_ros')
 import rospy
 import numpy as np
 from takktile_ros.msg import Touch
-from dot_display import DotDisplay
+from dot_display import DotDisplay, get_fullpath
 
 NODENAME = 'TakkViz'
 
-BACKGROUND = 'takkarray.bmp'
+BACKGROUND = os.path.join(os.path.split(__file__)[0], 'takkarray.bmp')
 
 xvals = np.array([34,109,186,260,336])
 yvals = np.array([563,592,563,592,563])
@@ -36,7 +36,7 @@ class DotVizNode:
         rospy.init_node(NODENAME, anonymous=True)
         rospy.loginfo(rospy.get_name()+" node initialized")
 
-	self.display = DotDisplay(BACKGROUND, DOT_RADIUS, DOT_POS)
+	self.display = DotDisplay(BACKGROUND, textpos=DOT_POS)
 	rospy.Subscriber('/takktile_ros/calibrated', Touch, self.callback)
 
    	rospy.spin()
@@ -44,7 +44,7 @@ class DotVizNode:
     def callback(self, data):
 	color = np.minimum(np.ones(len(data.pressure)), np.abs(np.array(data.pressure) / DATA_SCALE))
 
-	self.display.update(color)
+	self.display.update(color, DOT_POS, dotradius=DOT_RADIUS)
 
 if __name__ == '__main__':
 	dv = DotVizNode()
