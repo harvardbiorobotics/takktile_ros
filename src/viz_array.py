@@ -11,8 +11,9 @@
 import roslib; roslib.load_manifest('takktile_ros')
 import rospy
 import numpy as np
+import os
 from takktile_ros.msg import Touch
-from dot_display import DotDisplay, get_fullpath
+from dot_display import DotDisplay 
 
 NODENAME = 'TakkViz'
 
