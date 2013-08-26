@@ -1,14 +1,13 @@
 import pygame as pg
 import numpy as np
 
-import sys, os # used to avoid specifying absolute filepath for config files
+import sys, os, inspect # used to avoid specifying absolute filepath for config files
 
 # simple class to display takktile signals on top of an image of the robot
 # using pygame; dots change color as value changes
 # 
 # Leif Jentoft, Spring 2013
 
-	
 class DotDisplay:
 	def __init__(self, background, textpos=[], fontsize=12, fontcolor=(0,0,0)):
 		# background is a bitmap background image
@@ -48,7 +47,8 @@ if __name__ == '__main__':
 		(451,247),(432,244),(412,242),(392,239),(372,237),
 		(420,163),(407,175),(393,186),(378,198),(364,210))
 
-	display = DotDisplay(get_fullpath('takkarray.bmp'))
+	BACKGROUND = os.path.join(os.path.split(__file__)[0], 'takkarray.bmp')
+	display = DotDisplay(BACKGROUND)
 
 	display.update([1]*len(dots), 6, dots)
 
