@@ -1,19 +1,22 @@
 import pygame as pg
 import numpy as np
 
-import sys, os, inspect # used to avoid specifying absolute filepath for config files
-
-# simple class to display takktile signals on top of an image of the robot
-# using pygame; dots change color as value changes
+###############################################################################
+#
+# simple class to display takktile signals on top of an image using pygame
+# dots change color as value changes
 # 
 # Leif Jentoft, Spring 2013
+##############################################################################
 
 class DotDisplay:
 	def __init__(self, background, textpos=[], fontsize=12, fontcolor=(0,0,0)):
 		# background is a bitmap background image
 		# dotsize is the radius of the dots in pixels
-		# dotpos is a list of dot center locations in pixel coords (0,0) = upper left, x goes across screen, y goes down
+		# dotpos is a list of dot center locations in pixel coords 
+		# (0,0) = upper left, x goes across screen, y goes down
 		# e.g. ((10,10),(10,20))
+		# these can be easily retrieved from an image using e.g. gimp
 
 		# set up screen
 		pg.init()
