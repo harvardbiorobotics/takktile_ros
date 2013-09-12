@@ -10,7 +10,7 @@ import numpy as np
 ##############################################################################
 
 class DotDisplay:
-	def __init__(self, background, textpos=[], text=[], fontsize=12, fontcolor=(0,0,0)):
+	def __init__(self, background, textpos=[], text=[], fontsize=12, fontcolor=(0,0,0), heartbeat=False):
 		# background is a bitmap background image
 		# dotsize is the radius of the dots in pixels
 		# dotpos is a list of dot center locations in pixel coords 

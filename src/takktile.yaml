@@ -1,5 +1,5 @@
 contact_thresh : 15
-contact_threshold : 30
+contact_threshold : 5
 temperature_lowpass : 0.001
 frame_id : "unknown"
 

@@ -183,9 +183,12 @@ if __name__ == '__main__':
 	config = load_config(config_file)
 
 	FRAME_ID = get_param('frame_id', config, 'unknown')
-	CONTACT_THRESHOLD = get_param('contact_threshold', config, 10)
+	CONTACT_THRESHOLD = get_param('contact_threshold', config, 5)
 	TEMPERATURE_LOWPASS = get_param('temperature_lowpass', config, 0.001) # temp = lowpass * temp_new + (1 - lowpass) * temp_old
 	XYZ_MAP = []
+
+	print 'contact threshold:', CONTACT_THRESHOLD
+	print 'temp lowpass:', TEMPERATURE_LOWPASS
 	
 	for i in range(40):
 		XYZ_MAP += [Point(config[i][0], config[i][1], config[i][2])]
