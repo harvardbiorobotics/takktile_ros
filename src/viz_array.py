@@ -38,7 +38,7 @@ class DotVizNode:
         rospy.loginfo(rospy.get_name()+" node initialized")
 
 	self.display = DotDisplay(BACKGROUND, textpos=DOT_POS)
-	rospy.Subscriber('/takktile_ros/calibrated', Touch, self.callback)
+	rospy.Subscriber('/takktile/calibrated', Touch, self.callback)
 
    	rospy.spin()
 

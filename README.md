@@ -5,7 +5,7 @@ ros drivers for the TakkTile tactile array
 
 1.) Install TakkTile TakkFast USB drivers (see https://github.com/TakkTile/TakkTile-usb)
 
-This will install TakkTile.py which is a dependency (currently included as a symlink in takktile_ros -- need to fix this)
+This will install TakkTile.py which is a dependency (currently included as a symlink -- need to fix this)
 
 2) Get code
 
@@ -13,11 +13,11 @@ This will install TakkTile.py which is a dependency (currently included as a sym
 
 3) Add the package path to the ROS_PACKAGE_PATH
 
-> export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/path/to/your/directory
+> export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:/path/to/this/directory
 
 or add it to the bashrc
 
-> echo "ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:/home" >> ~/.bashrc
+> echo "ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:/path/to/this/directory" >> ~/.bashrc
 
 > source ~/.bashrc
 

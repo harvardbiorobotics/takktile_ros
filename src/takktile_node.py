@@ -5,10 +5,11 @@
 # Publishes raw and calibrated sensor data for the takktile sensor
 #
 # dynamic information is published at 100Hz
-#   /takktile/touch   
-#        thermally-compensated pressure readings from active sensors
+#   /takktile/calibrated
+#        zeroed pressure readings from active sensors (to add: thermal compensation)
 #    /takktile/contact 
-#        are sensors within pressure threshold of resting value (threshold specified in launch or config file)
+#        are sensors within pressure threshold of resting value (threshold specified 
+#		in launch or config file)
 #   /takktile/raw
 #        raw pressure
 #        low-pass-filtered temperature readings (filter coeff specified in launch or config file)
@@ -20,12 +21,12 @@
 #       xyz
 #            coordinates of present sensors (in message index)
 #            in meters per ROS conventions, relative to origin at center of bottom edge of board
-#            ID -> coodinate map is read from config file, modify to account for sensors that have been snapped apart
+#            ID -> coodinate map is read from config file, modify to account for sensors that have 
+#		been snapped apart
 #       calibration
 #            calibration coefficients (not yet implemented)
 # 
-# a service is also started that allows dynamic rezeroing of sensors to
-#   compensate for thermal drift
+# a service is also started that allows dynamic rezeroing of sensors to compensate for thermal drift
 #
 # the size of sensor message depends on size of array (length is the number of sensors that respond)
 #
@@ -54,7 +55,7 @@ from yaml import safe_load
 
 class TakkNode:
     def __init__(self, xyz_map, frame_id, temp_lowpass, contact_threshold):
-        topic = 'takktile_ros'
+        topic = 'takktile'
         
         # Set up node & topics
         rospy.init_node(topic, anonymous=True)
@@ -71,7 +72,6 @@ class TakkNode:
         tk = TakkTile()
 
         # get static values once
-#        self.alive = tk.getAlive()
         self.alive = tk.alive
 
         num_alive = len(tk.alive)
@@ -80,7 +80,7 @@ class TakkNode:
         rospy.Service(topic + '/zero', Empty, self.zero_callback)
         
         # publish sensor data at 100 Hz
-        r = rospy.Rate(50) 
+        r = rospy.Rate(100) 
 
 	tk.startSampling()
 
@@ -149,9 +149,9 @@ class TakkNode:
 
 def takktile_zero():
     # helper python interface to be used elsewhere
-    rospy.wait_for_service('/takktile_ros/zero')
+    rospy.wait_for_service('/takktile/zero')
     try:
-         zero = rospy.ServiceProxy('/takktile_ros/zero', Empty)
+         zero = rospy.ServiceProxy('/takktile/zero', Empty)
          zero()
          return 
     except rospy.ServiceException, e:

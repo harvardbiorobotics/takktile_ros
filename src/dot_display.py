@@ -1,5 +1,6 @@
 import pygame as pg
 import numpy as np
+import os
 
 ###############################################################################
 #
@@ -16,7 +17,7 @@ class DotDisplay:
 		# dotpos is a list of dot center locations in pixel coords 
 		# (0,0) = upper left, x goes across screen, y goes down
 		# e.g. ((10,10),(10,20))
-		# these can be easily retrieved from an image using e.g. gimp
+		# these can be easily retrieved from an image using the pixel coordinates of the mouse in gimp
 
 		# set up screen
 		pg.init()
