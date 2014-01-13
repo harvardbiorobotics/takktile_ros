@@ -32,7 +32,7 @@ or add it to the bashrc
 6) Run
 > rosrun takktile_ros takktile_node.py
 
-7) Plot
+7) Plot (in another terminal while takktile_node.py is running)
 
 ROS Fuerte:
 > rxplot /takktile/calibrated/pressure[0]:pressure[1]:pressure[2]:pressure[3]:pressure[4]
