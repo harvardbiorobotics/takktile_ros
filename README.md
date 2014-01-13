@@ -34,8 +34,8 @@ or add it to the bashrc
 
 7) Plot (in another terminal while takktile_node.py is running)
 
-ROS Fuerte:
+ROS Fuerte and earlier releases:
 > rxplot /takktile/calibrated/pressure[0]:pressure[1]:pressure[2]:pressure[3]:pressure[4]
 
-ROS Groovy+:
+ROS Fuerte and later releases:
 > rqt_plot /takktile/calibrated/pressure[0]:pressure[1]:pressure[2]:pressure[3]:pressure[4]
