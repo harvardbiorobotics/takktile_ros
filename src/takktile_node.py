@@ -4,7 +4,7 @@
 # 
 # Publishes raw and calibrated sensor data for the takktile sensor
 #
-# dynamic information is published at 100Hz
+# dynamic information is published at 60Hz
 #   /takktile/calibrated
 #        zeroed pressure readings from active sensors (to add: thermal compensation)
 #    /takktile/contact 
@@ -79,8 +79,8 @@ class TakkNode:
         # start rospy service for zeroing sensors
         rospy.Service(topic + '/zero', Empty, self.zero_callback)
         
-        # publish sensor data at 100 Hz
-        r = rospy.Rate(100) 
+        # publish sensor data at 60 Hz
+        r = rospy.Rate(60) 
 
 	tk.startSampling()
 
