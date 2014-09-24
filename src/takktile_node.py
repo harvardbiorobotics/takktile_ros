@@ -62,12 +62,12 @@ class TakkNode:
         rospy.loginfo(rospy.get_name()+" node initialized")
 
         # fast topics
-        raw_pub        = rospy.Publisher(topic + '/raw',     Raw)
-        calibrated_pub = rospy.Publisher(topic + '/calibrated',   Touch)
-        contact_pub    = rospy.Publisher(topic + '/contact', Contact)
+        raw_pub        = rospy.Publisher(topic + '/raw',     Raw, queue_size=1)
+        calibrated_pub = rospy.Publisher(topic + '/calibrated',   Touch, queue_size=1)
+        contact_pub    = rospy.Publisher(topic + '/contact', Contact, queue_size=1)
 
         # slow topic
-        info_pub = rospy.Publisher(topic + '/sensor_info', Info)
+        info_pub = rospy.Publisher(topic + '/sensor_info', Info, queue_size=1)
         # initialize connection to TakkTile
         tk = TakkTile()
 
