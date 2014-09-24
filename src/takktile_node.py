@@ -84,64 +84,61 @@ class TakkNode:
 
 	tk.startSampling()
 
-	try:
+	# initialize temperature lowpass with actual data
+        data = tk.getDataRaw()
+	# print 'self.getDataRaw():', data
 
-		# initialize temperature lowpass with actual data
-		data = tk.getDataSigned()
-		# print 'self.getDataRaw():', data
+	# unpack the values
+	# first - extract the values from the dictionary
+	# second - unzip
+	[self.pressure, self.temp] = zip(*data.values())
+        self.pressure = np.array(self.pressure)
+        self.temp = np.array(self.temp)
+	self.calibration = -np.array(self.pressure) # zero values at startup
 
-		# unpack the values
-		# first - extract the values from the dictionary
-		# second - unzip
-		[self.pressure, self.temp] = zip(*data.values())
-		self.pressure = np.array(self.pressure)
-		self.temp = np.array(self.temp)
-		self.calibration = -np.array(self.pressure) # zero values at startup
+        i = 0
+        #k = 0
+        while not rospy.is_shutdown():
+            i += 1
+            if i >= 100: # downsample static info
+                info_pub.publish(frame_id, xyz_map, self.alive)
+                i = 0
+                #k += 100
+                #print k
 
-		i = 0
-		#k = 0
-		while not rospy.is_shutdown():
-		    i += 1
-		    if i >= 100: # downsample static info
-		        info_pub.publish(frame_id, xyz_map, self.alive)
-		        i = 0
-		        #k += 100
-		        #print k
+            # publish sensor vals at 100 Hz
+            calibrated = [0.0] * num_alive
+            contact = [False] * num_alive
 
-		    # publish sensor vals at 100 Hz
-		    calibrated = [0.0] * num_alive
-		    contact = [False] * num_alive
+	    data=tk.getDataRaw()
 
-		    # this method takes the raw data and compensates for wrapping when occurs
-		    data=tk.getDataSigned()
+	    # unpack the values
+	    # first - extract the values from the dictionary
+	    # second - unzip
 
-		    # unpack the values
-		    # first - extract the values from the dictionary
-		    # second - unzip
+	    #	    print "type(data.values()) ->", type(data.values())
+	    #	    dataValues=data.values()
+	    #	    print "zip(*dataValues) ->", zip(*dataValues)
 
-		    #	    print "type(data.values()) ->", type(data.values())
-		    #	    dataValues=data.values()
-		    #	    print "zip(*dataValues) ->", zip(*dataValues)
+	    [self.pressure, temp_new] = zip(*data.values())
 
-		    [self.pressure, temp_new] = zip(*data.values())
+            #print self.pressure
+            # lowpass filter temperature
+            self.temp = TEMPERATURE_LOWPASS * np.array(temp_new) + (1 - TEMPERATURE_LOWPASS) * self.temp
+            raw_pub.publish(self.pressure, self.temp)
 
-		    #print self.pressure
-		    # lowpass filter temperature
-		    self.temp = TEMPERATURE_LOWPASS * np.array(temp_new) + (1 - TEMPERATURE_LOWPASS) * self.temp
-		    raw_pub.publish(self.pressure, self.temp)
+            calibrated = np.array(self.pressure) + self.calibration
+            for j in range(len(self.alive)):
+                contact[j] = abs(calibrated[j]) > contact_threshold
 
-		    calibrated = np.array(self.pressure) + self.calibration
-		    for j in range(len(self.alive)):
-		        contact[j] = abs(calibrated[j]) > contact_threshold
-
-		    calibrated_pub.publish(calibrated)
-		    contact_pub.publish(contact)
-		    # print "published Pressure ->", self.pressure
-		    r.sleep()
-        finally:
-		# switch things off
-		print "switching off"
-		tk.stopSampling()
+            calibrated_pub.publish(calibrated)
+            contact_pub.publish(contact)
+            # print "published Pressure ->", self.pressure
+            r.sleep()
+            
+	# switch things off
+	print "switching off"
+	tk.stopSampling()
 
     # start 'calibrate' service
     def zero_callback(self, msg):
