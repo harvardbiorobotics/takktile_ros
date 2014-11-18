@@ -53,6 +53,11 @@ from takktile_ros.msg import Raw, Touch, Contact, Info
 from TakkTile import TakkTile
 from yaml import safe_load
 
+# replace with 1 if the product is TakkArray
+TAKKARRAY_FLAG = 0
+# this is used for TakkArray sensor re-mapping
+TAKKARRAY_MAPPING = np.array([15, 16, 17, 18, 19, 25, 26, 27, 28, 29, 5, 6, 7, 8, 9, 30, 31, 32, 33, 34, 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 0, 1, 2, 3, 4, 35, 36, 37, 38, 39 ])
+
 class TakkNode:
     def __init__(self, xyz_map, frame_id, temp_lowpass, contact_threshold):
         topic = 'takktile'
@@ -125,6 +130,11 @@ class TakkNode:
             #print self.pressure
             # lowpass filter temperature
             self.temp = TEMPERATURE_LOWPASS * np.array(temp_new) + (1 - TEMPERATURE_LOWPASS) * self.temp
+
+	    # check if this is TakkArray, if yes, then remap the data
+            if (TAKKARRAY_FLAG):
+                self.pressure= [self.pressure[i] for i in TAKKARRAY_MAPPING]
+	    
             raw_pub.publish(self.pressure, self.temp)
 
             calibrated = np.array(self.pressure) + self.calibration
