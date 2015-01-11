@@ -36,6 +36,8 @@
 #   threshold
 #   calibration coefficients (if specified manually)
 #
+# updated Jan/1/2015 to include a number of TakkFast devices
+#
 ########################################################################
 # rosmake --target=clean -a --build-everything
 
@@ -73,25 +75,39 @@ class TakkNode:
 
         # slow topic
         info_pub = rospy.Publisher(topic + '/sensor_info', Info, queue_size=1)
+
         # initialize connection to TakkTile
-        tk = TakkTile()
+        tks = []
+        tks.append(TakkTile())
 
-        # get static values once
-        self.alive = tk.alive
+	print "Number of boards found = ", len(tks[0].UIDs)
+	print "UIDs ", tks[0].UIDs
 
-        num_alive = len(tk.alive)
-        self.calibration = np.zeros(len(tk.alive)) # start with zero-order calibration
+        # check if there are multiple interfaces that are connected
+	if len(tks[0].UIDs)>1:
+		for i in range(1, len(tks[0].UIDs)):
+			tks.append(TakkTile(i)) # start a new instance for each board
+
+        # get static map of populated live sensors
+	self.alive=[]
+	for tk in tks:
+		self.alive.append(tk.getAlive())
+
+        num_alive = len(self.alive)
+        self.calibration = np.zeros(num_alive) # start with zero-order calibration
         # start rospy service for zeroing sensors
         rospy.Service(topic + '/zero', Empty, self.zero_callback)
         
         # publish sensor data at 60 Hz
         r = rospy.Rate(60) 
 
-	tk.startSampling()
+	for tk in tks:
+		tk.startSampling()
 
 	# initialize temperature lowpass with actual data
-        data = tk.getDataRaw()
-	# print 'self.getDataRaw():', data
+        data = {}
+	for tk in tks:
+		data.update(tk.getDataRaw()) # read data from all the connected boards
 
 	# unpack the values
 	# first - extract the values from the dictionary
@@ -115,7 +131,9 @@ class TakkNode:
             calibrated = [0.0] * num_alive
             contact = [False] * num_alive
 
-	    data=tk.getDataRaw()
+	    data = {}
+	    for tk in tks:
+		data.update(tk.getDataRaw())  # read data from all the connected boards
 
 	    # unpack the values
 	    # first - extract the values from the dictionary
@@ -148,7 +166,8 @@ class TakkNode:
             
 	# switch things off
 	print "switching off"
-	tk.stopSampling()
+	for tk in tks:
+		tk.stopSampling()
 
     # start 'calibrate' service
     def zero_callback(self, msg):
