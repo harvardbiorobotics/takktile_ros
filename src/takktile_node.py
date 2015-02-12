@@ -49,7 +49,7 @@ import os, inspect   # used for loading conf file relative to script directory
 import numpy as np   # used for array operations
 
 from std_srvs.srv import Empty
-from geometry_msgs.msg import Point
+from geometry_msgs.msg import Point32
 from takktile_ros.msg import Raw, Touch, Contact, Info
 
 from TakkTile import TakkTile
@@ -220,6 +220,6 @@ if __name__ == '__main__':
 	print 'temp lowpass:', TEMPERATURE_LOWPASS
 	
 	for i in range(40):
-		XYZ_MAP += [Point(config[i][0], config[i][1], config[i][2])]
+		XYZ_MAP += [Point32(config[i][0], config[i][1], config[i][2])]
 
 	TakkNode(XYZ_MAP, FRAME_ID, TEMPERATURE_LOWPASS, CONTACT_THRESHOLD)
